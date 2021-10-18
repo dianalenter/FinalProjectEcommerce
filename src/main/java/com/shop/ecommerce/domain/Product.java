@@ -27,9 +27,8 @@ public class Product implements Serializable {
 		setHasBeenSold("Unsold");
 	}
 
-	public Product(Integer id, String name, Double price, Seller productOwner, String description) {
+	public Product( String name, Double price, Seller productOwner, String description) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.productOwner = productOwner;
@@ -46,7 +45,7 @@ public class Product implements Serializable {
 	private String name;
 	private Double price;
 	private String description;
-	
+
 
 	@Column
 	@JsonProperty(access = JsonProperty.Access.READ_ONLY)
@@ -61,22 +60,22 @@ public class Product implements Serializable {
 	@ManyToOne
 	@JoinTable(name = "CLIENT_PRODUCT", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "client_id"))
 	private Client buyerOfTheProduct;
-	
+
 	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "WISHLIST", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "client_id"))
 	private Set<Client> whoWhishesThisProduct;
-	
-	
+
+
 	@JsonIgnore
 	@OneToOne(mappedBy = "productOrder")
 	private Order order;
-	
 
-	
-	
-	
-	
+
+
+
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -109,7 +108,7 @@ public class Product implements Serializable {
 		this.productOwner = productOwner;
 	}
 
-	
+
 	public Client getBuyerOfTheProduct() {
 		return buyerOfTheProduct;
 	}
@@ -126,7 +125,7 @@ public class Product implements Serializable {
 		this.whoWhishesThisProduct = whoWhishesThisProduct;
 	}
 
-	
+
 
 	public Order getOrder() {
 		return order;
@@ -143,8 +142,8 @@ public class Product implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
+
+
 
 	public String hasBeenSold() {
 		return hasBeenSold;
@@ -157,15 +156,10 @@ public class Product implements Serializable {
 	public static boolean isSold(Product obj) {
 
 		if (obj.getBuyerOfTheProduct() != null) {
-			
+
 			return true;
 		}
 		return false;
-	}
-
-	@Override
-	public String toString() {
-		return "Product [name=" + name + ", price=" + price + ", productOwner=" + productOwner.getName() + "]";
 	}
 
 }

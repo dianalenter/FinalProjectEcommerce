@@ -2,14 +2,7 @@ package com.shop.ecommerce.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -17,6 +10,7 @@ import com.shop.ecommerce.domain.users.Client;
 import com.shop.ecommerce.domain.users.Seller;
 
 @Entity
+@Table(name="ord")
 public class Order implements Serializable{
 
 	/**

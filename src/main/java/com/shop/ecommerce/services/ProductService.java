@@ -62,7 +62,7 @@ public class ProductService {
 
 		SellerSS user = UserService.sellerAuthenticated();
 
-		obj.setId(null);
+//		obj.setProductId(null);
 		obj.setProductOwner(sellerService.findById(user.getId()));
 		obj.setHasBeenSold("Unsold");
 		return productRepo.save(obj);

@@ -18,6 +18,6 @@ public interface SellerRepository extends JpaRepository<Seller, Integer> {
 	Seller findByEmail(String email);
 
 	@Modifying
-	@Query(value = "select * from tb_sellers order by how_much_money_this_seller_has_sold DESC limit 10 ", nativeQuery = true)
+	@Query(value = "select * from seller order by how_much_money_this_seller_has_sold DESC limit 10 ", nativeQuery = true)
 	List<Seller> returnRankingSeller();
 }

@@ -65,7 +65,7 @@ public class ProductResource {
 	@PostMapping("/product")
 	public ResponseEntity<Product> insert(@RequestBody ProductDTO obj) {
 
-		Product product = new Product(null, obj.getName(), obj.getPrice(), null, obj.getDescription());
+		Product product = new Product(obj.getName(), obj.getPrice(), null, obj.getDescription());
 
 		service.insert(product);
 
